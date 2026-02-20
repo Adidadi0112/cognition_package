@@ -239,6 +239,8 @@ class RPUIStroopEffectActivityBodyState
                           cWord,
                           style: TextStyle(fontSize: 42, color: wColor),
                           textAlign: TextAlign.center,
+                          maxLines: 1,
+                          softWrap: false,
                         ),
                       ),
                     )
