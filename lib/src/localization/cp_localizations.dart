@@ -54,7 +54,7 @@ class CPLocalizations extends AssetLocalizations {
           'See https://carp.cachet.dk/localization for a description on how to do this. '
           'For now, translations provided in the app localization file(s) are also used for RP so you can provide translations for the RP terms there for now.');
     }
-
+    }
     Map<String, dynamic> jsonMap =
         json.decode(jsonString) as Map<String, dynamic>;
     translations
