@@ -232,10 +232,10 @@ class RPUIStroopEffectActivityBodyState
                   children: <Widget>[
                     SizedBox(
                       height: 100,
-                      width: 230,
+                      width: 300,
                       child: Text(
                         cWord,
-                        style: TextStyle(fontSize: 45, color: wColor),
+                        style: TextStyle(fontSize: 42, color: wColor),
                         textAlign: TextAlign.center,
                       ),
                     )
