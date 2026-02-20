@@ -232,11 +232,14 @@ class RPUIStroopEffectActivityBodyState
                   children: <Widget>[
                     SizedBox(
                       height: 100,
-                      width: 300,
-                      child: Text(
-                        cWord,
-                        style: TextStyle(fontSize: 42, color: wColor),
-                        textAlign: TextAlign.center,
+                      width: MediaQuery.of(context).size.width * 0.9,
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Text(
+                          cWord,
+                          style: TextStyle(fontSize: 42, color: wColor),
+                          textAlign: TextAlign.center,
+                        ),
                       ),
                     )
                   ]),
