@@ -28,6 +28,9 @@ class MyApp extends StatelessWidget {
         Locale('da'),
         Locale('fr'),
         Locale('pt'),
+        Locale('pl'),
+        Locale('de'),
+        Locale('de', 'AT')
       ],
       localizationsDelegates: [
         // Research Package (RP) and Cognition Package (CP) translations.
@@ -46,9 +49,15 @@ class MyApp extends StatelessWidget {
       ],
       // Returns a locale which will be used by the app
       localeResolutionCallback: (locale, supportedLocales) {
-        // Check if the current device locale is supported
+        // Check if the current device locale is exactly supported
         for (var supportedLocale in supportedLocales) {
-          if (supportedLocale.languageCode == locale!.languageCode) {
+          if (supportedLocale == locale) {
+            return supportedLocale;
+          }
+        }
+        // Check if the language code is supported
+        for (var supportedLocale in supportedLocales) {
+          if (supportedLocale.languageCode == locale?.languageCode) {
             return supportedLocale;
           }
         }

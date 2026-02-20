@@ -33,15 +33,21 @@ class CPLocalizations extends AssetLocalizations {
   /// provided in [staticAssetName].
   @override
   Future<void> load() async {
-    print("$runtimeType - loading static translations from '$staticAssetName'");
+    print("$runtimeType - loading static translations for '$locale'");
     String jsonString = '{}';
 
     try {
       jsonString = await rootBundle.loadString(
-        staticAssetName,
+        'packages/$assetPath/${locale.toString()}.json',
         cache: false,
       );
     } catch (_) {
+      try {
+        jsonString = await rootBundle.loadString(
+          staticAssetName,
+          cache: false,
+        );
+      } catch (_) {
       print(
           "WARNING - Failed to load RP translations for '$locale' and it seems like RP does not support this locale in the current version. "
           'If you are using this locale in your app, you should consider to make a pull request to RP so we can add this locale to the package for others to use as well. '
