@@ -237,7 +237,7 @@ class RPUIStroopEffectActivityBodyState
                         fit: BoxFit.scaleDown,
                         child: Text(
                           cWord,
-                          style: TextStyle(fontSize: 30, color: wColor),
+                          style: TextStyle(fontSize: 40, color: wColor),
                           textAlign: TextAlign.center,
                           maxLines: 1,
                           softWrap: false,
