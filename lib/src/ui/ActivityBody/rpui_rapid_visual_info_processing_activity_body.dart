@@ -151,62 +151,64 @@ class RPUIRapidVisualInfoProcessingActivityBodyState
     var locale = CPLocalizations.of(context);
     switch (activityStatus) {
       case ActivityStatus.Instruction:
-        return Column(
-          //entry screen with rules and start button
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: Text(
-                locale?.translate(texthint) ?? 'Hint',
-                style: const TextStyle(fontSize: 20),
-                overflow: TextOverflow.ellipsis,
-                maxLines: 20,
-                textAlign: TextAlign.center,
+        return SingleChildScrollView(
+          child: Column(
+            //entry screen with rules and start button
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(20),
+                child: Text(
+                  locale?.translate(texthint) ?? 'Hint',
+                  style: const TextStyle(fontSize: 16),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 20,
+                  textAlign: TextAlign.center,
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(5),
-              child: Container(
-                height: MediaQuery.of(context).size.height / 2.5,
-                width: MediaQuery.of(context).size.width / 1.1,
-                decoration: const BoxDecoration(
-                    image: DecorationImage(
-                        fit: BoxFit.fill,
-                        image: AssetImage(
-                            'packages/cognition_package/assets/images/RVIPintro.png'))),
+              Padding(
+                padding: const EdgeInsets.all(5),
+                child: Container(
+                  height: MediaQuery.of(context).size.height / 2.5,
+                  width: MediaQuery.of(context).size.width / 1.1,
+                  decoration: const BoxDecoration(
+                      image: DecorationImage(
+                          fit: BoxFit.fill,
+                          image: AssetImage(
+                              'packages/cognition_package/assets/images/RVIPintro.png'))),
+                ),
               ),
-            ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width / 2,
-              child: OutlinedButton(
-                style: ButtonStyle(
-                  padding: MaterialStateProperty.all(
-                    const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-                  ),
-                  shape: MaterialStateProperty.all(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(6),
+              SizedBox(
+                width: MediaQuery.of(context).size.width / 2,
+                child: OutlinedButton(
+                  style: ButtonStyle(
+                    padding: MaterialStateProperty.all(
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                    ),
+                    shape: MaterialStateProperty.all(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(6),
+                      ),
                     ),
                   ),
-                ),
-                onPressed: () {
-                  widget.eventLogger.instructionEnded();
-                  widget.eventLogger.testStarted();
-                  if (mounted) {
-                    setState(() {
-                      activityStatus = ActivityStatus.Test;
-                    });
-                  }
-                  startTest();
-                },
-                child: Text(
-                  locale?.translate('ready') ?? 'Ready',
-                  style: const TextStyle(fontSize: 18),
+                  onPressed: () {
+                    widget.eventLogger.instructionEnded();
+                    widget.eventLogger.testStarted();
+                    if (mounted) {
+                      setState(() {
+                        activityStatus = ActivityStatus.Test;
+                      });
+                    }
+                    startTest();
+                  },
+                  child: Text(
+                    locale?.translate('ready') ?? 'Ready',
+                    style: const TextStyle(fontSize: 18),
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         );
       case ActivityStatus.Test:
         return Column(
