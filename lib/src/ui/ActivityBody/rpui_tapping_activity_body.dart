@@ -98,7 +98,7 @@ class RPUITappingActivityBodyState extends State<RPUITappingActivityBody> {
                 padding: const EdgeInsets.all(20),
                 child: Text(
                   '${locale?.translate('tapping.instructions') ?? "On the next screen you should tap the two buttons as many times as possible with your index and middle finger. You should continue to do this for"} ${widget.activity.lengthOfTest} ${locale?.translate('seconds') ?? 'seconds'}.',
-                  style: const TextStyle(fontSize: 20),
+                  style: const TextStyle(fontSize: 16),
                   overflow: TextOverflow.ellipsis,
                   maxLines: 20,
                   textAlign: TextAlign.center,

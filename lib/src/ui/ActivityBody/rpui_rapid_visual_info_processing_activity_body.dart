@@ -172,10 +172,12 @@ class RPUIRapidVisualInfoProcessingActivityBodyState
                   height: MediaQuery.of(context).size.height / 2.5,
                   width: MediaQuery.of(context).size.width / 1.1,
                   decoration: const BoxDecoration(
-                      image: DecorationImage(
-                          fit: BoxFit.fill,
-                          image: AssetImage(
-                              'packages/cognition_package/assets/images/RVIPintro.png'))),
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: AssetImage(
+                          'packages/cognition_package/assets/images/RVIPintro.png'),
+                    ),
+                  ),
                 ),
               ),
               SizedBox(

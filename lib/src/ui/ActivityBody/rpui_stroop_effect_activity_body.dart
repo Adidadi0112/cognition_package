@@ -180,7 +180,7 @@ class RPUIStroopEffectActivityBodyState
               child: Text(
                 locale?.translate('stroop.tap_color') ??
                     "Tap the color of the word you see on screen. For example, tap the box that says 'GREEN' when a green word appears.",
-                style: const TextStyle(fontSize: 20),
+                style: const TextStyle(fontSize: 16),
                 overflow: TextOverflow.ellipsis,
                 maxLines: 20,
                 textAlign: TextAlign.center,

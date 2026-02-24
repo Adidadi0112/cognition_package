@@ -122,7 +122,7 @@ class RPUIReactionTimeActivityBodyState
               child: Text(
                 locale?.translate('reaction_time.tap_screen_green') ??
                     "Tap the screen as fast as possible when it turns from blue to yellow.",
-                style: const TextStyle(fontSize: 20),
+                style: const TextStyle(fontSize: 16),
                 overflow: TextOverflow.ellipsis,
                 maxLines: 5,
                 textAlign: TextAlign.center,
