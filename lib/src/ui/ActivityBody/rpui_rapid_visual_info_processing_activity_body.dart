@@ -276,7 +276,27 @@ class RPUIRapidVisualInfoProcessingActivityBodyState
                     style: const TextStyle(fontSize: 22),
                     overflow: TextOverflow.ellipsis,
                     maxLines: 5,
-                  )
+                  ),
+                  const SizedBox(height: 40),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 2,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(6),
+                        ),
+                      ),
+                      onPressed: () {
+                        // Signal that the activity is complete and ready to move to next step
+                        blocTask.sendStatus(RPStepStatus.Finished);
+                      },
+                      child: Text(
+                        locale?.translate('NEXT') ?? 'NEXT',
+                        style: const TextStyle(fontSize: 18),
+                      ),
+                    ),
+                  ),
                 ]));
     }
   }

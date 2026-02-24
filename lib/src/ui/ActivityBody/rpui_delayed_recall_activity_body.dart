@@ -121,15 +121,38 @@ class RPUIDelayedRecallActivityBodyState
           numberOfTests: widget.activity.numberOfTests,
         )));
       case ActivityStatus.Result:
-        return Center(
-          child: Text(
-            '${locale?.translate('results') ?? 'results'}: $score',
-            style: const TextStyle(fontSize: 22),
-            textAlign: TextAlign.center,
+        return Container(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                '${locale?.translate('results') ?? 'results'}: $score',
+                style: const TextStyle(fontSize: 22),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 40),
+              SizedBox(
+                width: MediaQuery.of(context).size.width / 2,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                  ),
+                  onPressed: () {
+                    blocTask.sendStatus(RPStepStatus.Finished);
+                  },
+                  child: Text(
+                    locale?.translate('NEXT') ?? 'NEXT',
+                    style: const TextStyle(fontSize: 18),
+                  ),
+                ),
+              ),
+            ],
           ),
         );
-      default:
-        return Container();
     }
   }
 }

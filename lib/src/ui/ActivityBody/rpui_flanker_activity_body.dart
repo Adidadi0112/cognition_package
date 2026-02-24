@@ -250,11 +250,36 @@ class RPUIFlankerActivityState extends State<RPUIFlankerActivity> {
         );
       case ActivityStatus.Result:
         if (widget.activity.includeResults) {
-          return Center(
-            child: Text(
-              '${locale?.translate('flanker.correct_swipes') ?? "Correct swipes"}: $rightSwipe',
-              style: const TextStyle(fontSize: 22),
-              textAlign: TextAlign.center,
+          return Container(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  '${locale?.translate('flanker.correct_swipes') ?? "Correct swipes"}: $rightSwipe',
+                  style: const TextStyle(fontSize: 22),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 40),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width / 2,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(6),
+                      ),
+                    ),
+                    onPressed: () {
+                      blocTask.sendStatus(RPStepStatus.Finished);
+                    },
+                    child: Text(
+                      locale?.translate('NEXT') ?? 'NEXT',
+                      style: const TextStyle(fontSize: 18),
+                    ),
+                  ),
+                ),
+              ],
             ),
           );
         } else {
@@ -267,8 +292,6 @@ class RPUIFlankerActivityState extends State<RPUIFlankerActivity> {
             ),
           );
         }
-      default:
-        return Container();
     }
   }
 }

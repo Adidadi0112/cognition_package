@@ -42,6 +42,8 @@ class RPUIWordRecallActivityBodyState
   Widget build(BuildContext context) {
     var locale = CPLocalizations.of(context);
     switch (activityStatus) {
+      case null:
+        return Container();
       case ActivityStatus.Instruction:
         return Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -162,15 +164,38 @@ class RPUIWordRecallActivityBodyState
           numberOfTests: widget.activity.numberOfTests,
         )));
       case ActivityStatus.Result:
-        return Center(
-          child: Text(
-            '${locale?.translate('results') ?? 'Results'}: $wordRecallScore',
-            style: const TextStyle(fontSize: 22),
-            textAlign: TextAlign.center,
+        return Container(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                '${locale?.translate('results') ?? 'Results'}: $wordRecallScore',
+                style: const TextStyle(fontSize: 22),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 40),
+              SizedBox(
+                width: MediaQuery.of(context).size.width / 2,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                  ),
+                  onPressed: () {
+                    blocTask.sendStatus(RPStepStatus.Finished);
+                  },
+                  child: Text(
+                    locale?.translate('NEXT') ?? 'NEXT',
+                    style: const TextStyle(fontSize: 18),
+                  ),
+                ),
+              ),
+            ],
           ),
         );
-      default:
-        return Container();
     }
   }
 }
