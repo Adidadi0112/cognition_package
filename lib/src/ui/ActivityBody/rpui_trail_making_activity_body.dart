@@ -199,65 +199,77 @@ class RPUITrailMakingActivityBodyState
         if (widget.activity.includeResults) {
           return Container(
             padding: const EdgeInsets.all(20),
-            child: Column(
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  '${locale?.translate('trail_making.completed_task') ?? "You completed the task in"}: $taskTime ${locale?.translate('seconds') ?? 'seconds'}!',
-                  style: const TextStyle(fontSize: 22),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 40),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width / 2,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 24, vertical: 16),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(6),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      '${locale?.translate('trail_making.completed_task') ?? "You completed the task in"}: $taskTime ${locale?.translate('seconds') ?? 'seconds'}!',
+                      style: const TextStyle(fontSize: 22),
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 40),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width / 2,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 24, vertical: 16),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(6),
+                          ),
+                        ),
+                        onPressed: () {
+                          blocTask.sendStatus(RPStepStatus.Finished);
+                        },
+                        child: Text(
+                          locale?.translate('NEXT') ?? 'NEXT',
+                          style: const TextStyle(fontSize: 18),
+                        ),
                       ),
                     ),
-                    onPressed: () {
-                      blocTask.sendStatus(RPStepStatus.Finished);
-                    },
-                    child: Text(
-                      locale?.translate('NEXT') ?? 'NEXT',
-                      style: const TextStyle(fontSize: 18),
-                    ),
-                  ),
+                  ],
                 ),
               ],
             ),
           );
         } else {
           return Container(
-            alignment: Alignment.center,
-            child: Column(
+            padding: const EdgeInsets.all(20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  locale?.translate('test_done') ?? "The test is done.",
-                  style: const TextStyle(fontSize: 22),
-                  textAlign: TextAlign.center,
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width / 2,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 24, vertical: 16),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(6),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      locale?.translate('test_done') ?? "The test is done.",
+                      style: const TextStyle(fontSize: 22),
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 40),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width / 2,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 24, vertical: 16),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(6),
+                          ),
+                        ),
+                        onPressed: () {
+                          blocTask.sendStatus(RPStepStatus.Finished);
+                        },
+                        child: Text(
+                          locale?.translate('NEXT') ?? 'NEXT',
+                          style: const TextStyle(fontSize: 18),
+                        ),
                       ),
                     ),
-                    onPressed: () {
-                      blocTask.sendStatus(RPStepStatus.Finished);
-                    },
-                    child: Text(
-                      locale?.translate('NEXT') ?? 'NEXT',
-                      style: const TextStyle(fontSize: 18),
-                    ),
-                  ),
+                  ],
                 ),
               ],
             ),
