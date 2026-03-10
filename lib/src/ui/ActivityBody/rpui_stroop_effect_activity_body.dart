@@ -245,14 +245,18 @@ class RPUIStroopEffectActivityBodyState
                       ),
                     )
                   ]),
-              Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    _makeButton(0),
-                    _makeButton(1),
-                    _makeButton(2),
-                    _makeButton(3),
-                  ])
+              Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[_makeButton(0), _makeButton(1)],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[_makeButton(2), _makeButton(3)],
+                  ),
+                ],
+              ),
             ]);
       case ActivityStatus.Result:
         return Container(
@@ -308,9 +312,10 @@ class RPUIStroopEffectActivityBodyState
 
   Widget _makeButton(int buttonNum) {
     String buttonCode = possColorsString[buttonNum];
-    return (SizedBox(
-        height: 75,
-        width: MediaQuery.of(context).size.width / 5,
+    return (Container(
+        margin: EdgeInsets.symmetric(vertical: 20),
+        height: MediaQuery.of(context).size.width * 0.4,
+        width: MediaQuery.of(context).size.width * 0.4,
         child: MaterialButton(
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(5),
