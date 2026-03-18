@@ -225,8 +225,9 @@ class RPUIStroopEffectActivityBodyState
       case ActivityStatus.Test:
         //main screen for test - contains word and buttons to push
         return Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
+              const SizedBox(height: 24),
               Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
@@ -237,7 +238,7 @@ class RPUIStroopEffectActivityBodyState
                         fit: BoxFit.scaleDown,
                         child: Text(
                           cWord,
-                          style: TextStyle(fontSize: 40, color: wColor),
+                          style: TextStyle(fontSize: 50, color: wColor),
                           textAlign: TextAlign.center,
                           maxLines: 1,
                           softWrap: false,
@@ -245,17 +246,22 @@ class RPUIStroopEffectActivityBodyState
                       ),
                     )
                   ]),
-              Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[_makeButton(0), _makeButton(1)],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[_makeButton(2), _makeButton(3)],
-                  ),
-                ],
+              const Spacer(),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 24),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[_makeButton(0), _makeButton(1)],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[_makeButton(2), _makeButton(3)],
+                    ),
+                  ],
+                ),
               ),
             ]);
       case ActivityStatus.Result:
@@ -312,10 +318,11 @@ class RPUIStroopEffectActivityBodyState
 
   Widget _makeButton(int buttonNum) {
     String buttonCode = possColorsString[buttonNum];
+    final double buttonSize = MediaQuery.of(context).size.width * 0.34;
     return (Container(
-        margin: EdgeInsets.symmetric(vertical: 20),
-        height: MediaQuery.of(context).size.width * 0.4,
-        width: MediaQuery.of(context).size.width * 0.4,
+        margin: const EdgeInsets.symmetric(vertical: 12),
+        height: buttonSize,
+        width: buttonSize,
         child: MaterialButton(
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(5),
