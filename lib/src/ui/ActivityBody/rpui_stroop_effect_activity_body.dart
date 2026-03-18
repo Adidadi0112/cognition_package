@@ -227,7 +227,7 @@ class RPUIStroopEffectActivityBodyState
         return Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              const SizedBox(height: 24),
+              const SizedBox(height: 64),
               Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
