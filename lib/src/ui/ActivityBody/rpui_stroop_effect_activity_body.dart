@@ -227,26 +227,28 @@ class RPUIStroopEffectActivityBodyState
         return Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              const SizedBox(height: 64),
-              Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
-                    SizedBox(
-                      height: 100,
-                      width: MediaQuery.of(context).size.width * 0.9,
-                      child: FittedBox(
-                        fit: BoxFit.scaleDown,
-                        child: Text(
-                          cWord,
-                          style: TextStyle(fontSize: 50, color: wColor),
-                          textAlign: TextAlign.center,
-                          maxLines: 1,
-                          softWrap: false,
-                        ),
-                      ),
-                    )
-                  ]),
-              const Spacer(),
+              Expanded(
+                child: Center(
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: <Widget>[
+                        SizedBox(
+                          height: 100,
+                          width: MediaQuery.of(context).size.width * 0.9,
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: Text(
+                              cWord,
+                              style: TextStyle(fontSize: 50, color: wColor),
+                              textAlign: TextAlign.center,
+                              maxLines: 1,
+                              softWrap: false,
+                            ),
+                          ),
+                        )
+                      ]),
+                ),
+              ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 24),
                 child: Column(
