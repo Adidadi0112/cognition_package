@@ -114,12 +114,11 @@ class RPUIDelayedRecallActivityBodyState
           ],
         );
       case ActivityStatus.Test:
-        return Scaffold(
-            body: Center(
-                child: DelayedRecall(
+        return Center(
+            child: DelayedRecall(
           sWidget: widget,
           numberOfTests: widget.activity.numberOfTests,
-        )));
+        ));
       case ActivityStatus.Result:
         return Container(
           padding: const EdgeInsets.all(20),

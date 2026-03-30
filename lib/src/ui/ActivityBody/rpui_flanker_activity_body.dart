@@ -242,12 +242,10 @@ class RPUIFlankerActivityState extends State<RPUIFlankerActivity> {
           ],
         );
       case ActivityStatus.Test:
-        return Scaffold(
-          body: Center(
-              child: Flanker(
-                  numberOfCards: widget.activity.numberOfCards,
-                  flankerState: this)),
-        );
+        return Center(
+            child: Flanker(
+                numberOfCards: widget.activity.numberOfCards,
+                flankerState: this));
       case ActivityStatus.Result:
         if (widget.activity.includeResults) {
           return Container(

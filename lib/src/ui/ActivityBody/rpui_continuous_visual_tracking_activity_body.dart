@@ -130,15 +130,14 @@ class RPUIContinuousVisualTrackingActivityBodyState
         );
       case ActivityStatus.Test:
         return Center(
-            child: Scaffold(
-                body: ContinuousVisualTrackingActivityBody(
-                    key: widget.key,
-                    topLevelWidget: widget,
-                    numberOfTests: widget.activity.numberOfTests,
-                    amountOfDots: widget.activity.amountOfDots,
-                    amountOfTargets: widget.activity.amountOfTargets,
-                    dotSize: widget.activity.dotSize,
-                    trackingSpeed: widget.activity.trackingSpeed)));
+            child: ContinuousVisualTrackingActivityBody(
+                key: widget.key,
+                topLevelWidget: widget,
+                numberOfTests: widget.activity.numberOfTests,
+                amountOfDots: widget.activity.amountOfDots,
+                amountOfTargets: widget.activity.amountOfTargets,
+                dotSize: widget.activity.dotSize,
+                trackingSpeed: widget.activity.trackingSpeed));
       case ActivityStatus.Result:
         return Container(
           padding: const EdgeInsets.all(20),

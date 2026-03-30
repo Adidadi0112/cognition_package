@@ -165,12 +165,11 @@ class RPUIPictureSequenceMemoryActivityBodyState
           ),
         );
       case ActivityStatus.Test:
-        return Scaffold(
-            body: Center(
-                child: PictureSequenceMemory(
-                    sWidget: widget,
-                    numberOfTests: widget.activity.numberOfTests,
-                    numberOfPics: widget.activity.numberOfPics)));
+        return Center(
+            child: PictureSequenceMemory(
+                sWidget: widget,
+                numberOfTests: widget.activity.numberOfTests,
+                numberOfPics: widget.activity.numberOfPics));
       case ActivityStatus.Result:
         if (widget.activity.includeResults) {
           return Container(

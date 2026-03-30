@@ -157,12 +157,11 @@ class RPUIWordRecallActivityBodyState
           ],
         );
       case ActivityStatus.Test:
-        return Scaffold(
-            body: Center(
-                child: WordRecall(
+        return Center(
+            child: WordRecall(
           widget: widget,
           numberOfTests: widget.activity.numberOfTests,
-        )));
+        ));
       case ActivityStatus.Result:
         return Container(
           padding: const EdgeInsets.all(20),

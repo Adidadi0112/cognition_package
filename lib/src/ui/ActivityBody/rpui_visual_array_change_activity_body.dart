@@ -147,14 +147,12 @@ class RPUIVisualArrayChangeActivityBodyState
           ],
         );
       case ActivityStatus.Test:
-        return Scaffold(
-          body: Center(
-              child: _VisualArrayChange(
-                  sWidget: widget,
-                  numberOfTests: widget.activity.numberOfTests,
-                  numberOfShapes: widget.activity.numberOfShapes,
-                  waitTime: widget.activity.waitTime)),
-        );
+        return Center(
+            child: _VisualArrayChange(
+                sWidget: widget,
+                numberOfTests: widget.activity.numberOfTests,
+                numberOfShapes: widget.activity.numberOfShapes,
+                waitTime: widget.activity.waitTime));
       case ActivityStatus.Result:
         return Container(
           padding: const EdgeInsets.all(20),
