@@ -199,16 +199,17 @@ class RPUITrailMakingActivityBodyState
         if (widget.activity.includeResults) {
           return Container(
             padding: const EdgeInsets.all(20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Column(
+            child: Center(
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 420),
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
                       '${locale?.translate('trail_making.completed_task') ?? "You completed the task in"}: $taskTime ${locale?.translate('seconds') ?? 'seconds'}!',
                       style: const TextStyle(fontSize: 22),
                       textAlign: TextAlign.center,
+                      softWrap: true,
                     ),
                     const SizedBox(height: 40),
                     SizedBox(
@@ -232,22 +233,23 @@ class RPUITrailMakingActivityBodyState
                     ),
                   ],
                 ),
-              ],
+              ),
             ),
           );
         } else {
           return Container(
             padding: const EdgeInsets.all(20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Column(
+            child: Center(
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 420),
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
                       locale?.translate('test_done') ?? "The test is done.",
                       style: const TextStyle(fontSize: 22),
                       textAlign: TextAlign.center,
+                      softWrap: true,
                     ),
                     const SizedBox(height: 40),
                     SizedBox(
@@ -271,7 +273,7 @@ class RPUITrailMakingActivityBodyState
                     ),
                   ],
                 ),
-              ],
+              ),
             ),
           );
         }

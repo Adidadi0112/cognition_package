@@ -341,41 +341,44 @@ class RPUIPairedAssociatesLearningActivityBodyState
       case ActivityStatus.Result:
         return Container(
             padding: const EdgeInsets.all(20),
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text(
-                            locale?.translate('test_done') ??
-                                "The test is done.",
-                            style: const TextStyle(fontSize: 22)),
-                        Text(
-                            '${locale?.translate('correct') ?? 'Correct'}: $successes, ${locale?.translate('wrong') ?? 'Wrong'}: $mistakes',
-                            style: const TextStyle(fontSize: 22)),
-                        const SizedBox(height: 40),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.5,
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 24, vertical: 16),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(6),
+            child: Center(
+                child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 420),
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                              locale?.translate('test_done') ??
+                                  "The test is done.",
+                              style: const TextStyle(fontSize: 22),
+                              textAlign: TextAlign.center,
+                              softWrap: true),
+                          Text(
+                              '${locale?.translate('correct') ?? 'Correct'}: $successes, ${locale?.translate('wrong') ?? 'Wrong'}: $mistakes',
+                              style: const TextStyle(fontSize: 22),
+                              textAlign: TextAlign.center,
+                              softWrap: true),
+                          const SizedBox(height: 40),
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.5,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 24, vertical: 16),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(6),
+                                ),
+                              ),
+                              onPressed: () {
+                                blocTask.sendStatus(RPStepStatus.Finished);
+                              },
+                              child: Text(
+                                locale?.translate('NEXT') ?? 'NEXT',
+                                style: const TextStyle(fontSize: 18),
                               ),
                             ),
-                            onPressed: () {
-                              blocTask.sendStatus(RPStepStatus.Finished);
-                            },
-                            child: Text(
-                              locale?.translate('NEXT') ?? 'NEXT',
-                              style: const TextStyle(fontSize: 18),
-                            ),
                           ),
-                        ),
-                      ]),
-                ]));
+                        ]))));
     }
   }
 

@@ -265,40 +265,47 @@ class RPUIRapidVisualInfoProcessingActivityBodyState
       case ActivityStatus.Result:
         return Container(
             padding: const EdgeInsets.all(20),
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(locale?.translate('test_done') ?? "The test is done.",
-                      style: const TextStyle(fontSize: 22)),
-                  Text(
-                    '${locale?.translate('you_had') ?? "You had"} $goodTaps ${locale?.translate('rapid_visual_info.correct_taps') ?? "correct guesses"} ${locale?.translate('and') ?? 'and'} $badTaps ${locale?.translate('rapid_visual_info.wrong_ones') ?? "wrong ones"}.',
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(fontSize: 22),
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 5,
-                  ),
-                  const SizedBox(height: 40),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width / 2,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 24, vertical: 16),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(6),
-                        ),
-                      ),
-                      onPressed: () {
-                        // Signal that the activity is complete and ready to move to next step
-                        blocTask.sendStatus(RPStepStatus.Finished);
-                      },
-                      child: Text(
-                        locale?.translate('NEXT') ?? 'NEXT',
-                        style: const TextStyle(fontSize: 18),
-                      ),
-                    ),
-                  ),
-                ]));
+            child: Center(
+                child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 420),
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                            locale?.translate('test_done') ??
+                                "The test is done.",
+                            style: const TextStyle(fontSize: 22),
+                            textAlign: TextAlign.center,
+                            softWrap: true,
+                          ),
+                          Text(
+                            '${locale?.translate('you_had') ?? "You had"} $goodTaps ${locale?.translate('rapid_visual_info.correct_taps') ?? "correct guesses"} ${locale?.translate('and') ?? 'and'} $badTaps ${locale?.translate('rapid_visual_info.wrong_ones') ?? "wrong ones"}.',
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(fontSize: 22),
+                            softWrap: true,
+                          ),
+                          const SizedBox(height: 40),
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width / 2,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 24, vertical: 16),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(6),
+                                ),
+                              ),
+                              onPressed: () {
+                                // Signal that the activity is complete and ready to move to next step
+                                blocTask.sendStatus(RPStepStatus.Finished);
+                              },
+                              child: Text(
+                                locale?.translate('NEXT') ?? 'NEXT',
+                                style: const TextStyle(fontSize: 18),
+                              ),
+                            ),
+                          ),
+                        ]))));
     }
   }
 }
