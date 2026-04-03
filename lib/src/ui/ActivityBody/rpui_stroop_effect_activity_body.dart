@@ -199,6 +199,9 @@ class RPUIStroopEffectActivityBodyState
               ),
             ),
             SizedBox(
+              height: 20,
+            ),
+            SizedBox(
               width: MediaQuery.of(context).size.width / 2,
               child: OutlinedButton(
                 style: ButtonStyle(
