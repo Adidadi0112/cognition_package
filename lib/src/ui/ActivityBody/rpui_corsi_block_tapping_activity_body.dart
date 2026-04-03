@@ -141,60 +141,71 @@ class RPUICorsiActivityBodyState
     switch (activityStatus) {
       case ActivityStatus.Instruction:
         return SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(20),
-                child: Text(
-                  locale?.translate('corsi_block.9_tiles') ??
-                      "On the following screen, you will see 9 tiles. Some of the tiles will be highlighted in a specific order. When the light in the top of the screen is green, and reads 'Go', you should press the tiles in the same order as they were highlighted. As the test progress, more and more tiles are highlighted.",
-                  style: const TextStyle(fontSize: 16),
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 10,
-                  textAlign: TextAlign.center,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(5),
-                child: Container(
-                  height: MediaQuery.of(context).size.height / 2.5,
-                  width: MediaQuery.of(context).size.width / 1.1,
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                    fit: BoxFit.fill,
-                    image: image.image,
-                  )),
-                ),
-              ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width / 2,
-                child: OutlinedButton(
-                  style: ButtonStyle(
-                    padding: MaterialStateProperty.all(
-                      const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 500),
+                    child: Text(
+                      locale?.translate('corsi_block.9_tiles') ??
+                          "On the following screen, you will see 9 tiles. Some of the tiles will be highlighted in a specific order. When the light in the top of the screen is green, and reads 'Go', you should press the tiles in the same order as they were highlighted. As the test progress, more and more tiles are highlighted.",
+                      style: TextStyle(
+                        fontFamily: 'Inter',
+                        fontSize: 18,
+                        fontWeight: FontWeight.w400,
+                        color: Theme.of(context).primaryColor,
+                        height: 1.6,
+                      ),
+                      textAlign: TextAlign.center,
                     ),
-                    shape: MaterialStateProperty.all(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(6),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(5),
+                  child: Container(
+                    height: MediaQuery.of(context).size.height / 2.5,
+                    width: MediaQuery.of(context).size.width / 1.1,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                      fit: BoxFit.fill,
+                      image: image.image,
+                    )),
+                  ),
+                ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width / 2,
+                  child: OutlinedButton(
+                    style: ButtonStyle(
+                      padding: MaterialStateProperty.all(
+                        const EdgeInsets.symmetric(
+                            horizontal: 24, vertical: 16),
+                      ),
+                      shape: MaterialStateProperty.all(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(6),
+                        ),
                       ),
                     ),
-                  ),
-                  onPressed: () {
-                    widget.eventLogger.instructionEnded();
-                    widget.eventLogger.testStarted();
-                    setState(() {
-                      activityStatus = ActivityStatus.Test;
-                    });
-                    startTest();
-                  },
-                  child: Text(
-                    locale?.translate('ready') ?? 'Ready',
-                    style: const TextStyle(fontSize: 18),
+                    onPressed: () {
+                      widget.eventLogger.instructionEnded();
+                      widget.eventLogger.testStarted();
+                      setState(() {
+                        activityStatus = ActivityStatus.Test;
+                      });
+                      startTest();
+                    },
+                    child: Text(
+                      locale?.translate('ready') ?? 'Ready',
+                      style: const TextStyle(fontSize: 18),
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         );
       case ActivityStatus.Test:

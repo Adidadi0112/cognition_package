@@ -164,82 +164,111 @@ class RPUIFlankerActivityState extends State<RPUIFlankerActivity> {
 
     switch (activityStatus) {
       case ActivityStatus.Instruction:
-        return Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Text(
-                locale?.translate('flanker.5_arrows') ??
-                    "Each card has 5 arrows on it.",
-                style: const TextStyle(fontSize: 16),
-                overflow: TextOverflow.ellipsis,
-                maxLines: 10,
-                textAlign: TextAlign.center,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: Text(
-                locale?.translate('flanker.swipe_cards') ??
-                    "Swipe the cards in the direction of the middle arrow on each card.",
-                style: const TextStyle(fontSize: 16),
-                overflow: TextOverflow.ellipsis,
-                maxLines: 10,
-                textAlign: TextAlign.center,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Text(
-                locale?.translate('flanker.ignored_arrows') ??
-                    "Ignore all other arrows on the cards, they are only there to distract you.",
-                style: const TextStyle(fontSize: 16),
-                overflow: TextOverflow.ellipsis,
-                maxLines: 10,
-                textAlign: TextAlign.center,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(5),
-              child: Container(
-                height: 250,
-                width: 250,
-                decoration: const BoxDecoration(
-                    image: DecorationImage(
-                        fit: BoxFit.fill,
-                        image: AssetImage(
-                            'packages/cognition_package/assets/images/flanker.png'))),
-              ),
-            ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width / 2,
-              child: OutlinedButton(
-                style: ButtonStyle(
-                  padding: MaterialStateProperty.all(
-                    const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-                  ),
-                  shape: MaterialStateProperty.all(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(6),
+        return SingleChildScrollView(
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 500),
+                    child: Text(
+                      locale?.translate('flanker.5_arrows') ??
+                          "Each card has 5 arrows on it.",
+                      style: TextStyle(
+                        fontFamily: 'Inter',
+                        fontSize: 18,
+                        fontWeight: FontWeight.w400,
+                        color: Theme.of(context).primaryColor,
+                        height: 1.6,
+                      ),
+                      textAlign: TextAlign.center,
                     ),
                   ),
                 ),
-                onPressed: () {
-                  widget.eventLogger.instructionEnded();
-                  widget.eventLogger.testStarted();
-                  setState(() {
-                    activityStatus = ActivityStatus.Test;
-                  });
-                  startTest();
-                },
-                child: Text(
-                  locale?.translate('ready') ?? 'Ready',
-                  style: const TextStyle(fontSize: 18),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 500),
+                    child: Text(
+                      locale?.translate('flanker.swipe_cards') ??
+                          "Swipe the cards in the direction of the middle arrow on each card.",
+                      style: TextStyle(
+                        fontFamily: 'Inter',
+                        fontSize: 18,
+                        fontWeight: FontWeight.w400,
+                        color: Theme.of(context).primaryColor,
+                        height: 1.6,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
                 ),
-              ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 500),
+                    child: Text(
+                      locale?.translate('flanker.ignored_arrows') ??
+                          "Ignore all other arrows on the cards, they are only there to distract you.",
+                      style: TextStyle(
+                        fontFamily: 'Inter',
+                        fontSize: 18,
+                        fontWeight: FontWeight.w400,
+                        color: Theme.of(context).primaryColor,
+                        height: 1.6,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(5),
+                  child: Container(
+                    height: 250,
+                    width: 250,
+                    decoration: const BoxDecoration(
+                        image: DecorationImage(
+                            fit: BoxFit.fill,
+                            image: AssetImage(
+                                'packages/cognition_package/assets/images/flanker.png'))),
+                  ),
+                ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width / 2,
+                  child: OutlinedButton(
+                    style: ButtonStyle(
+                      padding: MaterialStateProperty.all(
+                        const EdgeInsets.symmetric(
+                            horizontal: 24, vertical: 16),
+                      ),
+                      shape: MaterialStateProperty.all(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(6),
+                        ),
+                      ),
+                    ),
+                    onPressed: () {
+                      widget.eventLogger.instructionEnded();
+                      widget.eventLogger.testStarted();
+                      setState(() {
+                        activityStatus = ActivityStatus.Test;
+                      });
+                      startTest();
+                    },
+                    child: Text(
+                      locale?.translate('ready') ?? 'Ready',
+                      style: const TextStyle(fontSize: 18),
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         );
       case ActivityStatus.Test:
         return Center(

@@ -241,55 +241,69 @@ class RPUIPairedAssociatesLearningActivityBodyState
     //consists of a column with 5 rows of content
     switch (activityStatus) {
       case ActivityStatus.Instruction:
-        return Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: Text(
-                locale?.translate('paired_associate.screen_with_6_tiles') ??
-                    "The next screen will shown six tiles. Different figures hiding underneath some of the tiles will be revealed one by one. When all figures under each tile have been revealed, you should click the tile matching the figure in the middle.",
-                style: const TextStyle(fontSize: 16),
-                overflow: TextOverflow.ellipsis,
-                maxLines: 20,
-                textAlign: TextAlign.center,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(5),
-              child: Container(
-                height: MediaQuery.of(context).size.height / 2.5,
-                width: MediaQuery.of(context).size.width / 1.1,
-                decoration: const BoxDecoration(
-                    image: DecorationImage(
-                        fit: BoxFit.fill,
-                        image: AssetImage(
-                            'packages/cognition_package/assets/images/PALintro.png'))),
-              ),
-            ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width / 2,
-              child: OutlinedButton(
-                style: ButtonStyle(
-                  padding: MaterialStateProperty.all(
-                    const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-                  ),
-                  shape: MaterialStateProperty.all(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(6),
+        return SingleChildScrollView(
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 500),
+                    child: Text(
+                      locale?.translate(
+                              'paired_associate.screen_with_6_tiles') ??
+                          "The next screen will shown six tiles. Different figures hiding underneath some of the tiles will be revealed one by one. When all figures under each tile have been revealed, you should click the tile matching the figure in the middle.",
+                      style: TextStyle(
+                        fontFamily: 'Inter',
+                        fontSize: 18,
+                        fontWeight: FontWeight.w400,
+                        color: Theme.of(context).primaryColor,
+                        height: 1.6,
+                      ),
+                      textAlign: TextAlign.center,
                     ),
                   ),
                 ),
-                onPressed: () {
-                  startTest();
-                },
-                child: Text(
-                  locale?.translate('ready') ?? 'Ready',
-                  style: const TextStyle(fontSize: 18),
+                Padding(
+                  padding: const EdgeInsets.all(5),
+                  child: Container(
+                    height: MediaQuery.of(context).size.height / 2.5,
+                    width: MediaQuery.of(context).size.width / 1.1,
+                    decoration: const BoxDecoration(
+                        image: DecorationImage(
+                            fit: BoxFit.fill,
+                            image: AssetImage(
+                                'packages/cognition_package/assets/images/PALintro.png'))),
+                  ),
                 ),
-              ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width / 2,
+                  child: OutlinedButton(
+                    style: ButtonStyle(
+                      padding: MaterialStateProperty.all(
+                        const EdgeInsets.symmetric(
+                            horizontal: 24, vertical: 16),
+                      ),
+                      shape: MaterialStateProperty.all(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(6),
+                        ),
+                      ),
+                    ),
+                    onPressed: () {
+                      startTest();
+                    },
+                    child: Text(
+                      locale?.translate('ready') ?? 'Ready',
+                      style: const TextStyle(fontSize: 18),
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         );
       case ActivityStatus.Test:
         return Column(

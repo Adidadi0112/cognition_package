@@ -41,92 +41,128 @@ class RPUIContinuousVisualTrackingActivityBodyState
     var locale = CPLocalizations.of(context);
     switch (activityStatus) {
       case ActivityStatus.Instruction:
-        return Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: Text(
-                locale?.translate('visual_tracking.blue_dots') ??
-                    'Find the blue dots on the next screen. These are the targets dots.',
-                style: const TextStyle(fontSize: 16),
-                overflow: TextOverflow.ellipsis,
-                maxLines: 10,
-                textAlign: TextAlign.center,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: Text(
-                locale?.translate("visual_tracking.press_start") ??
-                    "Once ready, press 'Start' and the target dots will turn grey and start moving.",
-                style: const TextStyle(fontSize: 16),
-                overflow: TextOverflow.ellipsis,
-                maxLines: 10,
-                textAlign: TextAlign.center,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: Text(
-                locale?.translate('visual_tracking.follow_the_target') ??
-                    'Follow the blue target dots around the screen.',
-                style: const TextStyle(fontSize: 16),
-                overflow: TextOverflow.ellipsis,
-                maxLines: 10,
-                textAlign: TextAlign.center,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: Text(
-                locale?.translate(
-                        'visual_tracking.once_the_dots_stop_moving') ??
-                    'Once the dots stop moving, find and click on the target dots and they will turn into their original blue color.',
-                style: const TextStyle(fontSize: 16),
-                overflow: TextOverflow.ellipsis,
-                maxLines: 10,
-                textAlign: TextAlign.center,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(5),
-              child: Container(
-                height: MediaQuery.of(context).size.height / 3,
-                width: MediaQuery.of(context).size.width / 1.5,
-                decoration: const BoxDecoration(
-                    image: DecorationImage(
-                        fit: BoxFit.fill,
-                        image: AssetImage(
-                            'packages/cognition_package/assets/images/visual_tracking.png'))),
-              ),
-            ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width / 2,
-              child: OutlinedButton(
-                style: ButtonStyle(
-                  padding: MaterialStateProperty.all(
-                      const EdgeInsets.symmetric(horizontal: 24, vertical: 16)),
-                  shape: MaterialStateProperty.all(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(6),
+        return SingleChildScrollView(
+          child: Center(
+              child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 500),
+                  child: Text(
+                    locale?.translate('visual_tracking.blue_dots') ??
+                        'Find the blue dots on the next screen. These are the targets dots.',
+                    style: TextStyle(
+                      fontFamily: 'Inter',
+                      fontSize: 18,
+                      fontWeight: FontWeight.w400,
+                      color: Theme.of(context).primaryColor,
+                      height: 1.6,
                     ),
+                    textAlign: TextAlign.center,
                   ),
                 ),
-                onPressed: () {
-                  widget.eventLogger.instructionEnded();
-                  widget.eventLogger.testStarted();
-                  setState(() {
-                    activityStatus = ActivityStatus.Test;
-                  });
-                },
-                child: Text(
-                  locale?.translate('ready') ?? 'Ready',
-                  style: const TextStyle(fontSize: 18),
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 500),
+                  child: Text(
+                    locale?.translate("visual_tracking.press_start") ??
+                        "Once ready, press 'Start' and the target dots will turn grey and start moving.",
+                    style: TextStyle(
+                      fontFamily: 'Inter',
+                      fontSize: 18,
+                      fontWeight: FontWeight.w400,
+                      color: Theme.of(context).primaryColor,
+                      height: 1.6,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
                 ),
               ),
-            ),
-          ],
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 500),
+                  child: Text(
+                    locale?.translate('visual_tracking.follow_the_target') ??
+                        'Follow the blue target dots around the screen.',
+                    style: TextStyle(
+                      fontFamily: 'Inter',
+                      fontSize: 18,
+                      fontWeight: FontWeight.w400,
+                      color: Theme.of(context).primaryColor,
+                      height: 1.6,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 500),
+                  child: Text(
+                    locale?.translate(
+                            'visual_tracking.once_the_dots_stop_moving') ??
+                        'Once the dots stop moving, find and click on the target dots and they will turn into their original blue color.',
+                    style: TextStyle(
+                      fontFamily: 'Inter',
+                      fontSize: 18,
+                      fontWeight: FontWeight.w400,
+                      color: Theme.of(context).primaryColor,
+                      height: 1.6,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(5),
+                child: Container(
+                  height: MediaQuery.of(context).size.height / 3,
+                  width: MediaQuery.of(context).size.width / 1.5,
+                  decoration: const BoxDecoration(
+                      image: DecorationImage(
+                          fit: BoxFit.fill,
+                          image: AssetImage(
+                              'packages/cognition_package/assets/images/visual_tracking.png'))),
+                ),
+              ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width / 2,
+                child: OutlinedButton(
+                  style: ButtonStyle(
+                    padding: MaterialStateProperty.all(
+                        const EdgeInsets.symmetric(
+                            horizontal: 24, vertical: 16)),
+                    shape: MaterialStateProperty.all(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(6),
+                      ),
+                    ),
+                  ),
+                  onPressed: () {
+                    widget.eventLogger.instructionEnded();
+                    widget.eventLogger.testStarted();
+                    setState(() {
+                      activityStatus = ActivityStatus.Test;
+                    });
+                  },
+                  child: Text(
+                    locale?.translate('ready') ?? 'Ready',
+                    style: const TextStyle(fontSize: 18),
+                  ),
+                ),
+              ),
+            ],
+          )),
         );
       case ActivityStatus.Test:
         return Center(
