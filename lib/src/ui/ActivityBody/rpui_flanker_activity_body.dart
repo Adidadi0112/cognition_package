@@ -413,6 +413,7 @@ class FlankerCard extends StatelessWidget {
     return Swipable(
       onSwipeRight: onSwipeRight,
       onSwipeLeft: onSwipeLeft,
+      verticalSwipe: false,
       child: Container(
         width: MediaQuery.of(context).size.width * 0.9,
         height: MediaQuery.of(context).size.height * 0.7,
