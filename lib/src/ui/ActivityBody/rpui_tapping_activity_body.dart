@@ -90,68 +90,71 @@ class RPUITappingActivityBodyState extends State<RPUITappingActivityBody> {
     switch (activityStatus) {
       case ActivityStatus.Instruction:
         return SingleChildScrollView(
-          child: Center(
-            child: Column(
-              //entry screen with rules and start button
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                  child: ConstrainedBox(
-                    constraints: const BoxConstraints(maxWidth: 500),
-                    child: Text(
-                      '${locale?.translate('tapping.instructions') ?? "On the next screen you should tap the two buttons as many times as possible with your index and middle finger. You should continue to do this for"} ${widget.activity.lengthOfTest} ${locale?.translate('seconds') ?? 'seconds'}.',
-                      style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 18,
-                        fontWeight: FontWeight.w400,
-                        color: Theme.of(context).primaryColor,
-                        height: 1.6,
+          child: SizedBox(
+            height: MediaQuery.of(context).size.height,
+            child: Center(
+              child: Column(
+                //entry screen with rules and start button
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 20),
+                    child: ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: 500),
+                      child: Text(
+                        '${locale?.translate('tapping.instructions') ?? "On the next screen you should tap the two buttons as many times as possible with your index and middle finger. You should continue to do this for"} ${widget.activity.lengthOfTest} ${locale?.translate('seconds') ?? 'seconds'}.',
+                        style: TextStyle(
+                          fontFamily: 'Inter',
+                          fontSize: 18,
+                          fontWeight: FontWeight.w400,
+                          color: Theme.of(context).primaryColor,
+                          height: 1.6,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                      textAlign: TextAlign.center,
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(5),
-                  child: Container(
-                    height: MediaQuery.of(context).size.height / 2.5,
-                    width: MediaQuery.of(context).size.width / 1.1,
-                    decoration: const BoxDecoration(
-                        image: DecorationImage(
-                            fit: BoxFit.fill,
-                            image: AssetImage(
-                                'packages/cognition_package/assets/images/Tappingintro.png'))),
+                  Padding(
+                    padding: const EdgeInsets.all(5),
+                    child: Container(
+                      height: MediaQuery.of(context).size.height / 2.5,
+                      width: MediaQuery.of(context).size.width / 1.1,
+                      decoration: const BoxDecoration(
+                          image: DecorationImage(
+                              fit: BoxFit.fill,
+                              image: AssetImage(
+                                  'packages/cognition_package/assets/images/Tappingintro.png'))),
+                    ),
                   ),
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width / 2,
-                  child: OutlinedButton(
-                    style: ButtonStyle(
-                      padding: MaterialStateProperty.all(
-                        const EdgeInsets.symmetric(
-                            horizontal: 24, vertical: 16),
-                      ),
-                      shape: MaterialStateProperty.all(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(6),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 2,
+                    child: OutlinedButton(
+                      style: ButtonStyle(
+                        padding: MaterialStateProperty.all(
+                          const EdgeInsets.symmetric(
+                              horizontal: 24, vertical: 16),
+                        ),
+                        shape: MaterialStateProperty.all(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(6),
+                          ),
                         ),
                       ),
-                    ),
-                    onPressed: () async {
-                      startTest();
-                    },
-                    child: Text(
-                      locale?.translate('ready') ?? 'Ready',
-                      style: const TextStyle(fontSize: 18),
+                      onPressed: () async {
+                        startTest();
+                      },
+                      child: Text(
+                        locale?.translate('ready') ?? 'Ready',
+                        style: const TextStyle(fontSize: 18),
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(
-                  height: 100,
-                ),
-              ],
+                  const SizedBox(
+                    height: 100,
+                  ),
+                ],
+              ),
             ),
           ),
         );

@@ -69,109 +69,112 @@ class RPUIVisualArrayChangeActivityBodyState
         return Container();
       case ActivityStatus.Instruction:
         return SingleChildScrollView(
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                  child: ConstrainedBox(
-                    constraints: const BoxConstraints(maxWidth: 500),
-                    child: Text(
-                      locale?.translate('visual_array.memorize_colors') ??
-                          "On the next screen, you should memorize the colors of the shapes.",
-                      style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 18,
-                        fontWeight: FontWeight.w400,
-                        color: Theme.of(context).primaryColor,
-                        height: 1.6,
+          child: SizedBox(
+            height: MediaQuery.of(context).size.height,
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 12),
+                    child: ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: 500),
+                      child: Text(
+                        locale?.translate('visual_array.memorize_colors') ??
+                            "On the next screen, you should memorize the colors of the shapes.",
+                        style: TextStyle(
+                          fontFamily: 'Inter',
+                          fontSize: 18,
+                          fontWeight: FontWeight.w400,
+                          color: Theme.of(context).primaryColor,
+                          height: 1.6,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                      textAlign: TextAlign.center,
                     ),
                   ),
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
-                  child: ConstrainedBox(
-                    constraints: const BoxConstraints(maxWidth: 500),
-                    child: Text(
-                      locale?.translate(
-                              'visual_array.shapes_will_change_positions') ??
-                          "Once you are ready, press 'Start' and the shapes will change positions.",
-                      style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 18,
-                        fontWeight: FontWeight.w400,
-                        color: Theme.of(context).primaryColor,
-                        height: 1.6,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 12, horizontal: 20),
+                    child: ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: 500),
+                      child: Text(
+                        locale?.translate(
+                                'visual_array.shapes_will_change_positions') ??
+                            "Once you are ready, press 'Start' and the shapes will change positions.",
+                        style: TextStyle(
+                          fontFamily: 'Inter',
+                          fontSize: 18,
+                          fontWeight: FontWeight.w400,
+                          color: Theme.of(context).primaryColor,
+                          height: 1.6,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                      textAlign: TextAlign.center,
                     ),
                   ),
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
-                  child: ConstrainedBox(
-                    constraints: const BoxConstraints(maxWidth: 500),
-                    child: Text(
-                      locale?.translate('visual_array.indicate_changed') ??
-                          "Indicate if any of the shapes changed color ('Different') or if all shapes remained the same ('Same').",
-                      style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 18,
-                        fontWeight: FontWeight.w400,
-                        color: Theme.of(context).primaryColor,
-                        height: 1.6,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 12, horizontal: 20),
+                    child: ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: 500),
+                      child: Text(
+                        locale?.translate('visual_array.indicate_changed') ??
+                            "Indicate if any of the shapes changed color ('Different') or if all shapes remained the same ('Same').",
+                        style: TextStyle(
+                          fontFamily: 'Inter',
+                          fontSize: 18,
+                          fontWeight: FontWeight.w400,
+                          color: Theme.of(context).primaryColor,
+                          height: 1.6,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                      textAlign: TextAlign.center,
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(5),
-                  child: Container(
-                    height: 250,
-                    width: 250,
-                    decoration: const BoxDecoration(
-                        image: DecorationImage(
-                            fit: BoxFit.fill,
-                            image: AssetImage(
-                                'packages/cognition_package/assets/images/shape_recall.png'))),
+                  Padding(
+                    padding: const EdgeInsets.all(5),
+                    child: Container(
+                      height: 250,
+                      width: 250,
+                      decoration: const BoxDecoration(
+                          image: DecorationImage(
+                              fit: BoxFit.fill,
+                              image: AssetImage(
+                                  'packages/cognition_package/assets/images/shape_recall.png'))),
+                    ),
                   ),
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width / 2,
-                  child: OutlinedButton(
-                    style: ButtonStyle(
-                      padding: MaterialStateProperty.all(
-                        const EdgeInsets.symmetric(
-                            horizontal: 24, vertical: 16),
-                      ),
-                      shape: MaterialStateProperty.all(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(6),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 2,
+                    child: OutlinedButton(
+                      style: ButtonStyle(
+                        padding: MaterialStateProperty.all(
+                          const EdgeInsets.symmetric(
+                              horizontal: 24, vertical: 16),
+                        ),
+                        shape: MaterialStateProperty.all(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(6),
+                          ),
                         ),
                       ),
-                    ),
-                    onPressed: () {
-                      widget.eventLogger.instructionEnded();
-                      widget.eventLogger.testStarted();
-                      setState(() {
-                        activityStatus = ActivityStatus.Test;
-                      });
-                      startTest();
-                    },
-                    child: Text(
-                      locale?.translate('ready') ?? 'Ready',
-                      style: const TextStyle(fontSize: 18),
+                      onPressed: () {
+                        widget.eventLogger.instructionEnded();
+                        widget.eventLogger.testStarted();
+                        setState(() {
+                          activityStatus = ActivityStatus.Test;
+                        });
+                        startTest();
+                      },
+                      child: Text(
+                        locale?.translate('ready') ?? 'Ready',
+                        style: const TextStyle(fontSize: 18),
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         );

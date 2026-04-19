@@ -114,127 +114,133 @@ class RPUITrailMakingActivityBodyState
       case ActivityStatus.Instruction:
         if (instructionStep == 1) {
           return SingleChildScrollView(
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 20),
-                    child: ConstrainedBox(
-                      constraints: const BoxConstraints(maxWidth: 500),
-                      child: Text(
-                        isTypeA
-                            ? locale?.translate(
-                                    "trail_making.connect_boxes_type_A") ??
-                                "Connect the boxes to each other by drawing lines between them in numerical order, starting at '1'."
-                            : locale?.translate(
-                                    'trail_making.connect_boxes_type_B') ??
-                                "Connect the boxes to each other by drawing lines between them.",
-                        style: TextStyle(
-                          fontFamily: 'Inter',
-                          fontSize: 18,
-                          fontWeight: FontWeight.w400,
-                          color: Theme.of(context).primaryColor,
-                          height: 1.6,
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height,
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 20),
+                      child: ConstrainedBox(
+                        constraints: const BoxConstraints(maxWidth: 500),
+                        child: Text(
+                          isTypeA
+                              ? locale?.translate(
+                                      "trail_making.connect_boxes_type_A") ??
+                                  "Connect the boxes to each other by drawing lines between them in numerical order, starting at '1'."
+                              : locale?.translate(
+                                      'trail_making.connect_boxes_type_B') ??
+                                  "Connect the boxes to each other by drawing lines between them.",
+                          style: TextStyle(
+                            fontFamily: 'Inter',
+                            fontSize: 18,
+                            fontWeight: FontWeight.w400,
+                            color: Theme.of(context).primaryColor,
+                            height: 1.6,
+                          ),
+                          textAlign: TextAlign.center,
                         ),
-                        textAlign: TextAlign.center,
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width / 2,
-                    child: OutlinedButton(
-                      style: ButtonStyle(
-                        padding: MaterialStateProperty.all(
-                          const EdgeInsets.symmetric(
-                              horizontal: 24, vertical: 16),
-                        ),
-                        shape: MaterialStateProperty.all(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(6),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width / 2,
+                      child: OutlinedButton(
+                        style: ButtonStyle(
+                          padding: MaterialStateProperty.all(
+                            const EdgeInsets.symmetric(
+                                horizontal: 24, vertical: 16),
+                          ),
+                          shape: MaterialStateProperty.all(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(6),
+                            ),
                           ),
                         ),
-                      ),
-                      onPressed: () {
-                        advanceInstructionStep();
-                      },
-                      child: Text(
-                        locale?.translate('NEXT') ?? 'NEXT',
-                        style: const TextStyle(fontSize: 18),
+                        onPressed: () {
+                          advanceInstructionStep();
+                        },
+                        child: Text(
+                          locale?.translate('NEXT') ?? 'NEXT',
+                          style: const TextStyle(fontSize: 18),
+                        ),
                       ),
                     ),
-                  ),
-                  const SizedBox(
-                    height: 100,
-                  ),
-                ],
+                    const SizedBox(
+                      height: 100,
+                    ),
+                  ],
+                ),
               ),
             ),
           );
         } else {
           return SingleChildScrollView(
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 20),
-                    child: ConstrainedBox(
-                      constraints: const BoxConstraints(maxWidth: 500),
-                      child: Text(
-                        isTypeA
-                            ? ""
-                            : locale?.translate(
-                                    'trail_making.alternate_letters_numbers') ??
-                                "You must alternate between numbers and letters and should order them alphabetically and numerically, respectively. Start with the number '1'.",
-                        style: TextStyle(
-                          fontFamily: 'Inter',
-                          fontSize: 18,
-                          fontWeight: FontWeight.w400,
-                          color: Theme.of(context).primaryColor,
-                          height: 1.6,
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height,
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 20),
+                      child: ConstrainedBox(
+                        constraints: const BoxConstraints(maxWidth: 500),
+                        child: Text(
+                          isTypeA
+                              ? ""
+                              : locale?.translate(
+                                      'trail_making.alternate_letters_numbers') ??
+                                  "You must alternate between numbers and letters and should order them alphabetically and numerically, respectively. Start with the number '1'.",
+                          style: TextStyle(
+                            fontFamily: 'Inter',
+                            fontSize: 18,
+                            fontWeight: FontWeight.w400,
+                            color: Theme.of(context).primaryColor,
+                            height: 1.6,
+                          ),
+                          textAlign: TextAlign.center,
                         ),
-                        textAlign: TextAlign.center,
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(5),
-                    child: Image.asset(isTypeA
-                        ? 'packages/cognition_package/assets/images/trailmaking_a.png'
-                        : 'packages/cognition_package/assets/images/trailmaking_b.png'),
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width / 2,
-                    child: OutlinedButton(
-                      style: ButtonStyle(
-                        padding: MaterialStateProperty.all(
-                          const EdgeInsets.symmetric(
-                              horizontal: 24, vertical: 16),
-                        ),
-                        shape: MaterialStateProperty.all(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(6),
+                    Padding(
+                      padding: const EdgeInsets.all(5),
+                      child: Image.asset(isTypeA
+                          ? 'packages/cognition_package/assets/images/trailmaking_a.png'
+                          : 'packages/cognition_package/assets/images/trailmaking_b.png'),
+                    ),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width / 2,
+                      child: OutlinedButton(
+                        style: ButtonStyle(
+                          padding: MaterialStateProperty.all(
+                            const EdgeInsets.symmetric(
+                                horizontal: 24, vertical: 16),
+                          ),
+                          shape: MaterialStateProperty.all(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(6),
+                            ),
                           ),
                         ),
-                      ),
-                      onPressed: () {
-                        widget.eventLogger.instructionEnded();
-                        widget.eventLogger.testStarted();
-                        startTest();
-                      },
-                      child: Text(
-                        locale?.translate('ready') ?? 'Ready',
-                        style: const TextStyle(fontSize: 18),
+                        onPressed: () {
+                          widget.eventLogger.instructionEnded();
+                          widget.eventLogger.testStarted();
+                          startTest();
+                        },
+                        child: Text(
+                          locale?.translate('ready') ?? 'Ready',
+                          style: const TextStyle(fontSize: 18),
+                        ),
                       ),
                     ),
-                  ),
-                  const SizedBox(
-                    height: 100,
-                  ),
-                ],
+                    const SizedBox(
+                      height: 100,
+                    ),
+                  ],
+                ),
               ),
             ),
           );

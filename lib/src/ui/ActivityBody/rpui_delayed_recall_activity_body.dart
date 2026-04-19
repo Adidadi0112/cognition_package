@@ -46,90 +46,93 @@ class RPUIDelayedRecallActivityBodyState
     switch (activityStatus) {
       case ActivityStatus.Instruction:
         return SingleChildScrollView(
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                  child: ConstrainedBox(
-                    constraints: const BoxConstraints(maxWidth: 500),
-                    child: Text(
-                      locale?.translate('delayed_recall.remember_words') ??
-                          'Can you remember the words you recalled from the listening exercise earlier?',
-                      style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 18,
-                        fontWeight: FontWeight.w400,
-                        color: Theme.of(context).primaryColor,
-                        height: 1.6,
+          child: SizedBox(
+            height: MediaQuery.of(context).size.height,
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 20),
+                    child: ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: 500),
+                      child: Text(
+                        locale?.translate('delayed_recall.remember_words') ??
+                            'Can you remember the words you recalled from the listening exercise earlier?',
+                        style: TextStyle(
+                          fontFamily: 'Inter',
+                          fontSize: 18,
+                          fontWeight: FontWeight.w400,
+                          color: Theme.of(context).primaryColor,
+                          height: 1.6,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                      textAlign: TextAlign.center,
                     ),
                   ),
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                  child: ConstrainedBox(
-                    constraints: const BoxConstraints(maxWidth: 500),
-                    child: RichText(
-                      text: TextSpan(
-                          style: TextStyle(
-                            fontFamily: 'Inter',
-                            fontSize: 18,
-                            fontWeight: FontWeight.w400,
-                            color: Theme.of(context).primaryColor,
-                            height: 1.6,
-                          ),
-                          children: <TextSpan>[
-                            TextSpan(
-                                text:
-                                    '${locale?.translate('delayed_recall.remember_write') ?? 'Please write down the words you recall now and click'} '),
-                            TextSpan(
-                                text:
-                                    " '${locale?.translate('guess') ?? 'Guess'}'.",
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.bold)),
-                          ]),
-                      textAlign: TextAlign.center,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 20),
+                    child: ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: 500),
+                      child: RichText(
+                        text: TextSpan(
+                            style: TextStyle(
+                              fontFamily: 'Inter',
+                              fontSize: 18,
+                              fontWeight: FontWeight.w400,
+                              color: Theme.of(context).primaryColor,
+                              height: 1.6,
+                            ),
+                            children: <TextSpan>[
+                              TextSpan(
+                                  text:
+                                      '${locale?.translate('delayed_recall.remember_write') ?? 'Please write down the words you recall now and click'} '),
+                              TextSpan(
+                                  text:
+                                      " '${locale?.translate('guess') ?? 'Guess'}'.",
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold)),
+                            ]),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(5),
-                  child: Container(
-                    height: 250,
-                    width: 250,
-                    decoration: const BoxDecoration(
-                        image: DecorationImage(
-                            fit: BoxFit.fill,
-                            image: AssetImage(
-                                'packages/cognition_package/assets/images/delayed_recall.png'))),
-                  ),
-                ),
-                SizedBox(
-                  //width: MediaQuery.of(context).size.width / 2,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xffC32C39),
-                      fixedSize: const Size(300, 60),
+                  Padding(
+                    padding: const EdgeInsets.all(5),
+                    child: Container(
+                      height: 250,
+                      width: 250,
+                      decoration: const BoxDecoration(
+                          image: DecorationImage(
+                              fit: BoxFit.fill,
+                              image: AssetImage(
+                                  'packages/cognition_package/assets/images/delayed_recall.png'))),
                     ),
-                    child: Text(
-                      locale?.translate('ready') ?? 'Ready',
-                      style: const TextStyle(fontSize: 18),
-                    ),
-                    onPressed: () {
-                      widget.eventLogger.instructionEnded();
-                      widget.eventLogger.testStarted();
-                      setState(() {
-                        activityStatus = ActivityStatus.Test;
-                      });
-                    },
                   ),
-                ),
-              ],
+                  SizedBox(
+                    //width: MediaQuery.of(context).size.width / 2,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xffC32C39),
+                        fixedSize: const Size(300, 60),
+                      ),
+                      child: Text(
+                        locale?.translate('ready') ?? 'Ready',
+                        style: const TextStyle(fontSize: 18),
+                      ),
+                      onPressed: () {
+                        widget.eventLogger.instructionEnded();
+                        widget.eventLogger.testStarted();
+                        setState(() {
+                          activityStatus = ActivityStatus.Test;
+                        });
+                      },
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         );

@@ -63,127 +63,131 @@ class RPUIPictureSequenceMemoryActivityBodyState
     switch (activityStatus) {
       case ActivityStatus.Instruction:
         return SingleChildScrollView(
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                  child: ConstrainedBox(
-                    constraints: const BoxConstraints(maxWidth: 500),
-                    child: Text(
-                      locale?.translate('picture_sequence.memorize_order') ??
-                          "In this test you should memorize the original position of six images.",
-                      style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 18,
-                        fontWeight: FontWeight.w400,
-                        color: Theme.of(context).primaryColor,
-                        height: 1.6,
+          child: SizedBox(
+            height: MediaQuery.of(context).size.height,
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 20),
+                    child: ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: 500),
+                      child: Text(
+                        locale?.translate('picture_sequence.memorize_order') ??
+                            "In this test you should memorize the original position of six images.",
+                        style: TextStyle(
+                          fontFamily: 'Inter',
+                          fontSize: 18,
+                          fontWeight: FontWeight.w400,
+                          color: Theme.of(context).primaryColor,
+                          height: 1.6,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                      textAlign: TextAlign.center,
                     ),
                   ),
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                  child: ConstrainedBox(
-                    constraints: const BoxConstraints(maxWidth: 500),
-                    child: RichText(
-                      text: TextSpan(
-                          style: TextStyle(
-                            fontFamily: 'Inter',
-                            fontSize: 18,
-                            fontWeight: FontWeight.w400,
-                            color: Theme.of(context).primaryColor,
-                            height: 1.6,
-                          ),
-                          children: <TextSpan>[
-                            TextSpan(
-                                text: locale?.translate(
-                                        'picture_sequence.once_memorized') ??
-                                    "Once memorized click the"),
-                            TextSpan(
-                                text:
-                                    " '${locale?.translate('start') ?? 'Start'}' ",
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.bold)),
-                            TextSpan(
-                                text: locale?.translate(
-                                        'picture_sequence.images_change_positions') ??
-                                    "button and the images will change positions."),
-                          ]),
-                      textAlign: TextAlign.center,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 20),
+                    child: ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: 500),
+                      child: RichText(
+                        text: TextSpan(
+                            style: TextStyle(
+                              fontFamily: 'Inter',
+                              fontSize: 18,
+                              fontWeight: FontWeight.w400,
+                              color: Theme.of(context).primaryColor,
+                              height: 1.6,
+                            ),
+                            children: <TextSpan>[
+                              TextSpan(
+                                  text: locale?.translate(
+                                          'picture_sequence.once_memorized') ??
+                                      "Once memorized click the"),
+                              TextSpan(
+                                  text:
+                                      " '${locale?.translate('start') ?? 'Start'}' ",
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold)),
+                              TextSpan(
+                                  text: locale?.translate(
+                                          'picture_sequence.images_change_positions') ??
+                                      "button and the images will change positions."),
+                            ]),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                   ),
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                  child: ConstrainedBox(
-                    constraints: const BoxConstraints(maxWidth: 500),
-                    child: RichText(
-                      text: TextSpan(
-                          style: TextStyle(
-                            fontFamily: 'Inter',
-                            fontSize: 18,
-                            fontWeight: FontWeight.w400,
-                            color: Theme.of(context).primaryColor,
-                            height: 1.6,
-                          ),
-                          children: <TextSpan>[
-                            TextSpan(
-                                text: locale?.translate(
-                                        'picture_sequence.drag_and_drop') ??
-                                    "Drag and drop the images to their original positions and press"),
-                            TextSpan(
-                                text:
-                                    " '${locale?.translate('guess') ?? 'Guess'}'.",
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.bold)),
-                          ]),
-                      textAlign: TextAlign.center,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 20),
+                    child: ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: 500),
+                      child: RichText(
+                        text: TextSpan(
+                            style: TextStyle(
+                              fontFamily: 'Inter',
+                              fontSize: 18,
+                              fontWeight: FontWeight.w400,
+                              color: Theme.of(context).primaryColor,
+                              height: 1.6,
+                            ),
+                            children: <TextSpan>[
+                              TextSpan(
+                                  text: locale?.translate(
+                                          'picture_sequence.drag_and_drop') ??
+                                      "Drag and drop the images to their original positions and press"),
+                              TextSpan(
+                                  text:
+                                      " '${locale?.translate('guess') ?? 'Guess'}'.",
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold)),
+                            ]),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(5),
-                  child: Container(
-                    height: 200,
-                    width: 200,
-                    decoration: const BoxDecoration(
-                        image: DecorationImage(
-                            fit: BoxFit.fill,
-                            image: AssetImage(
-                                'packages/cognition_package/assets/images/picture_sequence.png'))),
-                  ),
-                ),
-                SizedBox(
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xffC32C39),
-                      fixedSize: const Size(300, 60),
+                  Padding(
+                    padding: const EdgeInsets.all(5),
+                    child: Container(
+                      height: 200,
+                      width: 200,
+                      decoration: const BoxDecoration(
+                          image: DecorationImage(
+                              fit: BoxFit.fill,
+                              image: AssetImage(
+                                  'packages/cognition_package/assets/images/picture_sequence.png'))),
                     ),
-                    child: Text(
-                      locale?.translate('ready') ?? 'Ready',
-                      style: const TextStyle(fontSize: 18, color: Colors.white),
-                    ),
-                    onPressed: () {
-                      widget.eventLogger.instructionEnded();
-                      widget.eventLogger.testStarted();
-                      setState(() {
-                        activityStatus = ActivityStatus.Test;
-                      });
-                      startTest();
-                    },
                   ),
-                ),
-                const SizedBox(
-                  height: 100,
-                ),
-              ],
+                  SizedBox(
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xffC32C39),
+                        fixedSize: const Size(300, 60),
+                      ),
+                      child: Text(
+                        locale?.translate('ready') ?? 'Ready',
+                        style:
+                            const TextStyle(fontSize: 18, color: Colors.white),
+                      ),
+                      onPressed: () {
+                        widget.eventLogger.instructionEnded();
+                        widget.eventLogger.testStarted();
+                        setState(() {
+                          activityStatus = ActivityStatus.Test;
+                        });
+                        startTest();
+                      },
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 100,
+                  ),
+                ],
+              ),
             ),
           ),
         );
