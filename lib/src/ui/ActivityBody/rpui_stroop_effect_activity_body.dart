@@ -172,72 +172,69 @@ class RPUIStroopEffectActivityBodyState
     switch (activityStatus) {
       case ActivityStatus.Instruction:
         return SingleChildScrollView(
-          child: SizedBox(
-            height: MediaQuery.of(context).size.height,
-            child: Center(
-              child: Column(
-                //entry screen with rules and start button
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 20),
-                    child: ConstrainedBox(
-                      constraints: const BoxConstraints(maxWidth: 500),
-                      child: Text(
-                        locale?.translate('stroop.tap_color') ??
-                            "Tap the color of the word you see on screen. For example, tap the box that says 'GREEN' when a green word appears.",
-                        style: TextStyle(
-                          fontFamily: 'Inter',
-                          fontSize: 18,
-                          fontWeight: FontWeight.w400,
-                          color: Theme.of(context).primaryColor,
-                          height: 1.6,
-                        ),
-                        textAlign: TextAlign.center,
+          child: Center(
+            child: Column(
+              //entry screen with rules and start button
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 500),
+                    child: Text(
+                      locale?.translate('stroop.tap_color') ??
+                          "Tap the color of the word you see on screen. For example, tap the box that says 'GREEN' when a green word appears.",
+                      style: TextStyle(
+                        fontFamily: 'Inter',
+                        fontSize: 18,
+                        fontWeight: FontWeight.w400,
+                        color: Theme.of(context).primaryColor,
+                        height: 1.6,
                       ),
+                      textAlign: TextAlign.center,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(5),
-                    child: Container(
-                      height: MediaQuery.of(context).size.height / 2.5,
-                      width: MediaQuery.of(context).size.width / 1.1,
-                      decoration: const BoxDecoration(
-                          image: DecorationImage(
-                              fit: BoxFit.fill,
-                              image: AssetImage(
-                                  'packages/cognition_package/assets/images/Stroopintro.png'))),
-                    ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(5),
+                  child: Container(
+                    height: MediaQuery.of(context).size.height / 2.5,
+                    width: MediaQuery.of(context).size.width / 1.1,
+                    decoration: const BoxDecoration(
+                        image: DecorationImage(
+                            fit: BoxFit.fill,
+                            image: AssetImage(
+                                'packages/cognition_package/assets/images/Stroopintro.png'))),
                   ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width / 2,
-                    child: OutlinedButton(
-                      style: ButtonStyle(
-                        padding: MaterialStateProperty.all(
-                          const EdgeInsets.symmetric(
-                              horizontal: 24, vertical: 16),
-                        ),
-                        shape: MaterialStateProperty.all(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(6),
-                          ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width / 2,
+                  child: OutlinedButton(
+                    style: ButtonStyle(
+                      padding: MaterialStateProperty.all(
+                        const EdgeInsets.symmetric(
+                            horizontal: 24, vertical: 16),
+                      ),
+                      shape: MaterialStateProperty.all(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(6),
                         ),
                       ),
-                      onPressed: () {
-                        startTest();
-                      },
-                      child: Text(
-                        locale?.translate('ready') ?? 'Ready',
-                        style: const TextStyle(fontSize: 18),
-                      ),
+                    ),
+                    onPressed: () {
+                      startTest();
+                    },
+                    child: Text(
+                      locale?.translate('ready') ?? 'Ready',
+                      style: const TextStyle(fontSize: 18),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         );

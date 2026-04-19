@@ -46,135 +46,132 @@ class RPUIWordRecallActivityBodyState
         return Container();
       case ActivityStatus.Instruction:
         return SingleChildScrollView(
-          child: SizedBox(
-            height: MediaQuery.of(context).size.height,
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 10),
-                    child: ConstrainedBox(
-                      constraints: const BoxConstraints(maxWidth: 500),
-                      child: Text(
-                        locale?.translate('word_recall.turn_on_sound') ??
-                            "Turn on sound for this task.",
-                        style: TextStyle(
-                          fontFamily: 'Inter',
-                          fontSize: 18,
-                          fontWeight: FontWeight.w400,
-                          color: Theme.of(context).primaryColor,
-                          height: 1.6,
-                        ),
-                        textAlign: TextAlign.center,
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 500),
+                    child: Text(
+                      locale?.translate('word_recall.turn_on_sound') ??
+                          "Turn on sound for this task.",
+                      style: TextStyle(
+                        fontFamily: 'Inter',
+                        fontSize: 18,
+                        fontWeight: FontWeight.w400,
+                        color: Theme.of(context).primaryColor,
+                        height: 1.6,
                       ),
+                      textAlign: TextAlign.center,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 10),
-                    child: ConstrainedBox(
-                      constraints: const BoxConstraints(maxWidth: 500),
-                      child: Text(
-                        locale?.translate('word_recall.list_of_words') ??
-                            "A list of words will be read aloud. Try to memorize the list of words.",
-                        style: TextStyle(
-                          fontFamily: 'Inter',
-                          fontSize: 18,
-                          fontWeight: FontWeight.w400,
-                          color: Theme.of(context).primaryColor,
-                          height: 1.6,
-                        ),
-                        textAlign: TextAlign.center,
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 500),
+                    child: Text(
+                      locale?.translate('word_recall.list_of_words') ??
+                          "A list of words will be read aloud. Try to memorize the list of words.",
+                      style: TextStyle(
+                        fontFamily: 'Inter',
+                        fontSize: 18,
+                        fontWeight: FontWeight.w400,
+                        color: Theme.of(context).primaryColor,
+                        height: 1.6,
                       ),
+                      textAlign: TextAlign.center,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 10),
-                    child: ConstrainedBox(
-                      constraints: const BoxConstraints(maxWidth: 500),
-                      child: Text(
-                        locale?.translate('word_recall.asked_to_recall') ??
-                            "After the words have been read aloud you will be asked to recall them.",
-                        style: TextStyle(
-                          fontFamily: 'Inter',
-                          fontSize: 18,
-                          fontWeight: FontWeight.w400,
-                          color: Theme.of(context).primaryColor,
-                          height: 1.6,
-                        ),
-                        textAlign: TextAlign.center,
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 500),
+                    child: Text(
+                      locale?.translate('word_recall.asked_to_recall') ??
+                          "After the words have been read aloud you will be asked to recall them.",
+                      style: TextStyle(
+                        fontFamily: 'Inter',
+                        fontSize: 18,
+                        fontWeight: FontWeight.w400,
+                        color: Theme.of(context).primaryColor,
+                        height: 1.6,
                       ),
+                      textAlign: TextAlign.center,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 10),
-                    child: ConstrainedBox(
-                      constraints: const BoxConstraints(maxWidth: 500),
-                      child: RichText(
-                        text: TextSpan(
-                            style: TextStyle(
-                              fontFamily: 'Inter',
-                              fontSize: 18,
-                              fontWeight: FontWeight.w400,
-                              color: Theme.of(context).primaryColor,
-                              height: 1.6,
-                            ),
-                            children: <TextSpan>[
-                              TextSpan(
-                                  text: locale?.translate(
-                                          'word_recall.write_words') ??
-                                      "Write the words you recall in the boxes in any order and click"),
-                              TextSpan(
-                                  text:
-                                      " '${locale?.translate('guess') ?? 'Guess'}'.",
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.bold)),
-                            ]),
-                        textAlign: TextAlign.center,
-                      ),
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 500),
+                    child: RichText(
+                      text: TextSpan(
+                          style: TextStyle(
+                            fontFamily: 'Inter',
+                            fontSize: 18,
+                            fontWeight: FontWeight.w400,
+                            color: Theme.of(context).primaryColor,
+                            height: 1.6,
+                          ),
+                          children: <TextSpan>[
+                            TextSpan(
+                                text: locale?.translate(
+                                        'word_recall.write_words') ??
+                                    "Write the words you recall in the boxes in any order and click"),
+                            TextSpan(
+                                text:
+                                    " '${locale?.translate('guess') ?? 'Guess'}'.",
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold)),
+                          ]),
+                      textAlign: TextAlign.center,
                     ),
                   ),
-                  Container(height: 0),
-                  Padding(
-                    padding: const EdgeInsets.all(25),
-                    child: Container(
-                      height: 100,
-                      width: 200,
-                      decoration: const BoxDecoration(
-                          image: DecorationImage(
-                              fit: BoxFit.fill,
-                              image: AssetImage(
-                                  'packages/cognition_package/assets/images/wordlist_recall.png'))),
-                    ),
+                ),
+                Container(height: 0),
+                Padding(
+                  padding: const EdgeInsets.all(25),
+                  child: Container(
+                    height: 100,
+                    width: 200,
+                    decoration: const BoxDecoration(
+                        image: DecorationImage(
+                            fit: BoxFit.fill,
+                            image: AssetImage(
+                                'packages/cognition_package/assets/images/wordlist_recall.png'))),
                   ),
-                  SizedBox(
-                    //width: MediaQuery.of(context).size.width / 2,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xffC32C39),
-                        fixedSize: const Size(300, 60),
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 24, vertical: 16),
-                      ),
-                      child: Text(
-                        locale?.translate('ready') ?? 'Ready',
-                        style: const TextStyle(fontSize: 18),
-                      ),
-                      onPressed: () {
-                        widget.eventLogger.instructionEnded();
-                        widget.eventLogger.testStarted();
-                        setState(() {
-                          activityStatus = ActivityStatus.Test;
-                        });
-                      },
+                ),
+                SizedBox(
+                  //width: MediaQuery.of(context).size.width / 2,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xffC32C39),
+                      fixedSize: const Size(300, 60),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 24, vertical: 16),
                     ),
+                    child: Text(
+                      locale?.translate('ready') ?? 'Ready',
+                      style: const TextStyle(fontSize: 18),
+                    ),
+                    onPressed: () {
+                      widget.eventLogger.instructionEnded();
+                      widget.eventLogger.testStarted();
+                      setState(() {
+                        activityStatus = ActivityStatus.Test;
+                      });
+                    },
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         );
